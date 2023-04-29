@@ -73,23 +73,50 @@ class Project:
                     file.close()
                     return json.dumps(projectsArr, indent=4)
 
+
+     
+
     @staticmethod
-    def editProject():
-            projectsArr = []
-            with open("projects.json",'r') as file:
-                    projectsArr = json.load(file)
-                    file.close()
-                    return projectsArr
-  
+    def editProject(user):
+        email = user['email']
+        projectsArr = Project.readProjects()
+
+        filteredProjects = [project for project in projectsArr if project["userEmail"] == email]
+
+        if not filteredProjects:
+            print("No projects found for user with email:", email)
+            return
+
+        value_to_be_edited = input("Enter the key to be edited (title/details/target/start_date/end_date): ")
+        new_value = input("Enter new value: ")
+
+        for project_to_edit in filteredProjects:
+            if value_to_be_edited not in project_to_edit:
+                print("Invalid key entered for project:", project_to_edit['title'])
+                continue
+
+        project_to_edit[value_to_be_edited] = new_value
+
+        # write back to the JSON file
+        with open("projects.json", 'w') as file:
+                json.dump(projectsArr, file, indent=4)
+                file.close()
+                print("Projects updated successfully.")
 
 
-
+user = {
+        "firstName": "mona",
+        "lastName": "ahmed",
+        "email": "mona@gmail.com",
+        "password": "$2b$12$4UOIpQAakX0ptcH5MVwKiOeZQ1LWtKRc49z6R/YTigGwo4FtC4ggu",
+        "mobile": "01012345678"
+        }                 
 #print(Project.createProject())
 
 
 #print(Project.viewProject())
 
-#print(Project.editProject())
+print(Project.editProject(user))
 
 
 
