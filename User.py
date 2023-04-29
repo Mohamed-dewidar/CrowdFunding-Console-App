@@ -1,9 +1,10 @@
 from ansi_color_codes import *
+import json
 import re
 import bcrypt
 
 class User:
-    
+    currUser = None
     def __init__(self, firstName: str, lastName: str, email: str, password: str, mobile: str) -> None:
         self.firstName = firstName
         self.lastName = lastName
@@ -20,7 +21,11 @@ class User:
         mobile = User.__mobileValidation()
 
         user = User(fName, lName, email, passwordHash, mobile)
-        return user
+        
+        userArr = User.readUsers()
+        User.addUser(user, userArr)
+        User.login()
+        
 
     @staticmethod
     def __nameValidation() -> None:
@@ -79,7 +84,7 @@ class User:
 
         passwordHash = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
-        return passwordHash
+        return passwordHash.decode("utf-8")
 
 
     @staticmethod
@@ -95,7 +100,7 @@ class User:
 
 
     @staticmethod
-    def login(usermail, userpass) -> bool:
+    def login() -> object:
         print(f"{BBlue}\nLogin{Color_Off}")
         emailRegex = "^[\w]+@([\w-]+\.)+[\w-]{3}$"
         passwordRegex = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
@@ -112,10 +117,50 @@ class User:
             print(f"{Red}Enter a valid Password{Color_Off}")
             password = input(f"""{BCyan}Enter Password ==> {Color_Off}""")
 
+        usersArr = User.readUsers()
+        for user in usersArr:
+            if(email == user['email'] and  bcrypt.checkpw(password.encode("utf-8"), user['password'].encode("utf-8") )):
+                User.currUser = user
+                return
+            
+        print(f"{Red}Login data is wrong{Color_Off}")
+        userRes = input(f"{BCyan} back to register [Y/N] ==> {Color_Off}")
+        while(not userRes in ['Y','y','N','n']):
+            print(f"{Red}Enter a valid option{Color_Off}")
+            userRes = input(f"{BCyan} back to register [Y/N] ==> {Color_Off}")
+        
+        if(userRes in ['y','Y']):
+            User.register()
+        else:
+            User.login()
 
-        if(not (email == usermail and  bcrypt.checkpw(password.encode("utf-8"), userpass) )):
-            print(f"check your data")
-            User.login(usermail, userpass)
+    @staticmethod
+    def readUsers():
+        usersArr = []
+        with open("users.json",'r') as file:
+            usersArr = json.load(file)
+            file.close()
+        return usersArr
+    
+    @staticmethod
+    def addUser(user, usersArr):
+        newuser = [{
+            "firstName" : user.firstName,
+            "lastName": user.lastName,
+            "email": user.email,
+            "password": user.password,
+            "mobile": user.mobile
+        }]
+        
+        usersArr.extend(newuser)
+       
+        with open("users.json", 'w') as file:
+            json.dump(usersArr, file, indent=4)
+            file.close()
+            
+            
 
-        return True
 
+
+
+     

@@ -1,0 +1,37 @@
+[
+    {
+        "firstName": "mohamed",
+        "lastName": "khaled",
+        "email": "sirdoda@gmail.com",
+        "password": "$2b$12$QY5iGmB8sL1NK.8/8gzmhevFe9Q.p9BMAmcp0beGSfawv6yxvZPDO",
+        "mobile": "01000092671"
+    },
+    {
+        "firstName": "ahmed",
+        "lastName": "ali",
+        "email": "ahmed@gmail.com",
+        "password": "$2b$12$meuksAn.inppsEAt86C8luxP4RkCPibEq1enBP2x1TOlLNeOGiTzS",
+        "mobile": "01012232323"
+    },
+    {
+        "firstName": "mona",
+        "lastName": "ahmed",
+        "email": "mona@gmail.com",
+        "password": "$2b$12$4UOIpQAakX0ptcH5MVwKiOeZQ1LWtKRc49z6R/YTigGwo4FtC4ggu",
+        "mobile": "01012345678"
+    },
+    {
+        "firstName": "heba",
+        "lastName": "ess",
+        "email": "heba@gmail.com",
+        "password": "$2b$12$bHbHYe0F7fXJDVPtNzoKRuYYHYH29HnF96zVJogg/bnCytJoKOy1G",
+        "mobile": "01234567891"
+    },
+    {
+        "firstName": "asdads",
+        "lastName": "asdad",
+        "email": "abc@yahoo.com",
+        "password": "$2b$12$CIAEbb6wm7g.R2A7F6dayewE6GoKWiABnNO10PxqiWLauxd13hbHu",
+        "mobile": "01012345671"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "name": "abc",
+        "details": "xyz",
+        "target": 200000,
+        "startDate": "29/4/2023",
+        "endData": "30/5/20203",
+        "userEmail": "mohamed@gmail.com"
+    }
+]
