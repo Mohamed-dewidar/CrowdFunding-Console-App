@@ -1,7 +1,4 @@
 [
-
-    
-
     {
         "firstName": "mohamed",
         "lastName": "khaled",
@@ -36,6 +33,12 @@
         "email": "abc@yahoo.com",
         "password": "$2b$12$CIAEbb6wm7g.R2A7F6dayewE6GoKWiABnNO10PxqiWLauxd13hbHu",
         "mobile": "01012345671"
+    },
+    {
+        "firstName": "mena",
+        "lastName": "ahsraf",
+        "email": "mena@gmail.com",
+        "password": "$2b$12$uk4bnG.URFJLfms51wUW0OMOPSpchGjGg55e.b0MdXVZlSBHdCmYe",
+        "mobile": "01232321231"
     }
-
 ]

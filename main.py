@@ -48,11 +48,16 @@ def projectMenu():
     menuSelection = {
         '1': Project.createProject,
         '2': Project.viewProject,
-        
+        '3': Project.editProject,
+        '4': Project.deleteProject
     }
 
     while(True):
-        print(f"""{BYellow}
+        print(f"""{BBlue}
+##################
+## Project Menu ##    
+##################{Color_Off}  
+        {BYellow}
     1 - add project
     2 - list all projects
     3 - edit project

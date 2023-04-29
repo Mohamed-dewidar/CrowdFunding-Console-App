@@ -1,41 +1,42 @@
 [
     {
-        "title": "",
+        "title": "Python Funding",
         "details": "r",
-        "target": 1,
+        "target": 2123,
+        "startDate": "2023-01-01 00:00:00",
+        "endDate": "2025-12-01 00:00:00",
+        "userEmail": "mona@gmail.com"
+    },
+    {
+        "title": "JavaScript",
+        "details": "r",
+        "target": 200000,
         "startDate": "2023-01-01 00:00:00",
         "endDate": "2024-01-01 00:00:00",
         "userEmail": "mona@gmail.com"
     },
     {
-        "title": "",
+        "title": "React Funding",
         "details": "r",
         "target": 1,
         "startDate": "2023-01-01 00:00:00",
         "endDate": "2024-01-01 00:00:00",
         "userEmail": "mona@gmail.com"
-    },
-    {
-        "title": "python",
-        "details": "r",
-        "target": 1,
-        "startDate": "2023-01-01 00:00:00",
-        "endDate": "2024-01-01 00:00:00",
-        "userEmail": "mona@gmail.com"
-    },
-    {
-        "title": "ttt",
-        "details": "rrr",
-        "target": 99,
-        "startDate": "2023-10-10 00:00:00",
-        "endDate": "2030-01-01 00:00:00",
-        "userEmail": "ttt@gmail.com"
     },
     {
         "title": "PythonPro",
         "details": "a project to fund my python project",
         "target": 30000,
         "startDate": "2023-04-29 00:00:00",
-        "endDate": "2023-09-29 00:00:00"
+        "endDate": "2023-09-29 00:00:00",
+        "userEmail": "ttt@gmail.com"
+    },
+    {
+        "title": "Ramdan",
+        "details": "we are trying to help people in ramdan with food, give them a hand by donating any amount of money",
+        "target": 30000,
+        "startDate": "2023-05-01 00:00:00",
+        "endDate": "2024-01-13 00:00:00",
+        "userEmail": "mena@gmail.com"
     }
 ]
