@@ -2,6 +2,7 @@ import datetime
 import re
 import json
 class Project:
+
     def __init__(self, title, details, target, start_date, end_date):
         self.title = title
         self.details = details 
