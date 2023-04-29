@@ -12,7 +12,7 @@ class Project:
 
 
     @staticmethod             
-    def createProject():
+    def createProject(user):
             title = input("Enter project title: ")
             details = input("Enter project details: ")
             while True:
@@ -66,12 +66,13 @@ class Project:
                 file.close()
     
     @staticmethod
-    def viewProject():
+    def viewProject(user):
             projectsArr = []
             with open("projects.json",'r') as file:
                     projectsArr = json.load(file)
                     file.close()
-                    return json.dumps(projectsArr, indent=4)
+                    print(json.dumps(projectsArr, indent=4))
+            
 
     @staticmethod
     def editProject():

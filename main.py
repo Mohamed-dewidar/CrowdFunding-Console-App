@@ -43,30 +43,39 @@ def projectMenu():
     print(f"""{BBlue}
 ##################
 ## Project Menu ##    
-##################
-    {BYellow}
-    1 - add project
-    2 - list all projects
-    3 - edit project
-    4 - search for project by date
-    {Color_Off}""")
-
-
+##################{Color_Off}""")
+    
     menuSelection = {
-        '1': Project.createProject
+        '1': Project.createProject,
+        '2': Project.viewProject,
+        
     }
 
     while(True):
+        print(f"""{BYellow}
+    1 - add project
+    2 - list all projects
+    3 - edit project
+    4 - delete project
+    5 - search for project by date
+    6 - exit
+    {Color_Off}""")
+
         num = input(f"{BCyan}Enter a selection number ==> {Color_Off}")
         try:
+            if(num == '6'):
+                sys.exit()
             if(menuSelection[num]):
-                menuSelection[num]()
-                break
+                menuSelection[num](User.currUser)
         except Exception as err:
             print(f"{Red}Enter a valin choice{Color_Off}")    
+    
+  
 
 
 
+
+## App Start ##
 mainHome()
 
 

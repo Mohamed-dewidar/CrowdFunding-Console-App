@@ -1,13 +1,11 @@
 [
     {
-
         "title": "r",
         "details": "r",
         "target": 1,
         "startDate": "2023-01-01 00:00:00",
         "endDate": "2024-01-01 00:00:00",
-        "userEmail":"r@gmail.com"
-
+        "userEmail": "r@gmail.com"
     },
     {
         "title": "ttt",
@@ -15,6 +13,13 @@
         "target": 99,
         "startDate": "2023-10-10 00:00:00",
         "endDate": "2030-01-01 00:00:00",
-        "userEmail":"ttt@gmail.com"
+        "userEmail": "ttt@gmail.com"
+    },
+    {
+        "title": "PythonPro",
+        "details": "a project to fund my python project",
+        "target": 30000,
+        "startDate": "2023-04-29 00:00:00",
+        "endDate": "2023-09-29 00:00:00"
     }
 ]
