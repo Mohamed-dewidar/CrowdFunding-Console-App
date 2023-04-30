@@ -69,11 +69,14 @@ class Project:
                 file.close()
     
     @staticmethod
-    def viewProject(user):
+    def viewProject(user=None, filteredProjects=None):
         projectsArr = []
         with open("projects.json",'r') as file:
                 projectsArr = json.load(file)
                 file.close()
+            
+        if(filteredProjects):
+            projectsArr = filteredProjects
 
         border = "+----------------------+----------------------+----------------------+----------------------+----------------------+"
         print(f"{Green}{border}")
@@ -210,7 +213,53 @@ class Project:
             Project.editProject(user)
 
 
+    @staticmethod
+    def searchOnProject(user):
+        print(f"{BBlue}Search on Project by date{Color_Off}\n")
 
+        projectsArr = Project.readProjects()
+        ## date selectin (start | end) ##
+        dateSearchDir = {'1':'startDate','2':'endDate'}
+        print(f"""{Yellow}which date you want to search on
+            1 - start date
+            2 - end date
+            """)
+        while(True):
+            
+            selectionNum = input(f"{BCyan}select a number ==> {Color_Off}")
+            try:
+                if(not re.search("^[1-9]+0*$", selectionNum) or int(selectionNum) > 2):
+                    raise Exception("Enter a valid number\n")
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}")
+        dateSearch = dateSearchDir[selectionNum]
+        ## search condition ##
+        conditionDir = {
+            '1': Project.__dateIsEqual,
+            '2': Project.__dateIsGreater,
+            '3': Project.__dateIsLess,
+            '4': Project.__dateIsGreaterOrEqual,
+            '5': Project.__dateIsLessOrEqual 
+        }
+        print(f"""{Yellow}the {dateSearch} .... entered date
+            1 - equal to
+            2 - greater than
+            3 - less than
+            4 - greater than or equal
+            5 - less than or equal
+            """)
+        while(True):
+            
+            selectionNum = input(f"{BCyan}select a number ==> {Color_Off}")
+            try:
+                if(not re.search("^[1-9]+0*$", selectionNum) or int(selectionNum) > 5):
+                    raise Exception("Enter a valid number\n")
+                
+                conditionDir[selectionNum](projectsArr, dateSearch)
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}")   
 
     @staticmethod
     def __titleValidation(project=None):
@@ -293,6 +342,82 @@ class Project:
 
         return str(endDate)
     
+    @staticmethod
+    def __dateIsEqual(projectsArr, dateSearch):
+        
+        while(True):
+            date = input(f"{BCyan}Enter the date as [yyyy-mm-dd] ==> {Color_Off}")
+            try:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d')
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}\n")
+
+        filteredProjects = [project for project in projectsArr 
+                            if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') == date]
+        Project.viewProject(filteredProjects= filteredProjects)
+
+    @staticmethod
+    def __dateIsGreater(projectsArr, dateSearch):
+        
+        while(True):
+            date = input(f"{BCyan}Enter the date as [yyyy-mm-dd] ==> {Color_Off}")
+            try:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d')
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}\n")
+
+        filteredProjects = [project for project in projectsArr 
+                            if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') > date]
+        Project.viewProject(filteredProjects= filteredProjects)       
+    
+
+    @staticmethod
+    def __dateIsLess(projectsArr, dateSearch):
+        
+        while(True):
+            date = input(f"{BCyan}Enter the date as [yyyy-mm-dd] ==> {Color_Off}")
+            try:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d')
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}\n")
+
+        filteredProjects = [project for project in projectsArr 
+                            if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') < date]
+        Project.viewProject(filteredProjects= filteredProjects)
+
+    @staticmethod
+    def __dateIsGreaterOrEqual(projectsArr, dateSearch):
+        
+        while(True):
+            date = input(f"{BCyan}Enter the date as [yyyy-mm-dd] ==> {Color_Off}")
+            try:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d')
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}\n")
+
+        filteredProjects = [project for project in projectsArr 
+                            if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') >= date]
+        Project.viewProject(filteredProjects= filteredProjects)
+
+
+    @staticmethod
+    def __dateIsLessOrEqual(projectsArr, dateSearch):
+        
+        while(True):
+            date = input(f"{BCyan}Enter the date as [yyyy-mm-dd] ==> {Color_Off}")
+            try:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d')
+                break
+            except Exception as err:
+                print(f"{Red}{err}{Color_Off}\n")
+
+        filteredProjects = [project for project in projectsArr 
+                            if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') <= date]
+        Project.viewProject(filteredProjects= filteredProjects)     
 
 
 

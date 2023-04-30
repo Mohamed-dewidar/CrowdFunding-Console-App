@@ -17,17 +17,19 @@ def mainHome():
     {Yellow}
     1 - Register
     2 - login
+    3 - exit
     {Color_Off}""")
 
     menuSelection = {
         '1': User.register,
-        '2': User.login,
-        '3': projectMenu
+        '2': User.login
     }
 
     while(not User.currUser):
         num = input(f"{BCyan}Enter a selection number ==> {Color_Off}")
         try:
+            if(num == '3'):
+                sys.exit()
             if(menuSelection[num]):
                 menuSelection[num]()
         except Exception as err:
@@ -39,17 +41,13 @@ def mainHome():
 
 
 def projectMenu():
-
-    print(f"""{BBlue}
-##################
-## Project Menu ##    
-##################{Color_Off}""")
     
     menuSelection = {
         '1': Project.createProject,
         '2': Project.viewProject,
         '3': Project.editProject,
-        '4': Project.deleteProject
+        '4': Project.deleteProject,
+        '5': Project.searchOnProject
     }
 
     while(True):
@@ -63,17 +61,22 @@ def projectMenu():
     3 - edit project
     4 - delete project
     5 - search for project by date
-    6 - exit
+    6 - Log out
+    7 - exit
     {Color_Off}""")
 
         num = input(f"{BCyan}Enter a selection number ==> {Color_Off}")
         try:
-            if(num == '6'):
+            if(num == '7'):
                 sys.exit()
+            if(num == '6'):
+                User.currUser = None
+                mainHome()
+                return
             if(menuSelection[num]):
                 menuSelection[num](User.currUser)
         except Exception as err:
-            print(f"{Red}Enter a valin choice{Color_Off}")    
+            print(f"{Red}Enter a valid choice{Color_Off}")    
     
   
 
