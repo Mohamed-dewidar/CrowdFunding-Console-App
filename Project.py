@@ -16,15 +16,15 @@ class Project:
 
     @staticmethod             
     def createProject(user):
-            title = input(f"{BCyan}Enter project title ==> {Color_Off}")
-            details = input(f"{BCyan}Enter project details ==> {Color_Off}")
+            title = Project.__titleValidation()
+            details = Project.__detailsValidation()
             while True:
                 target = input(f"{BCyan}Enter target number you want to achieve: {Color_Off}")   
                 if  (re.search("^\d+$",target)):           
                     target =  int(target)
                     break
                 else:
-                    print(f"{Red}Target must be a number {Color_Off}")
+                    print(f"{BCyan}Target must be a number {Color_Off}")
             while True:
                 try:
                     start_date = input(f"{Red}Enter start date (yyyy-mm-dd) ==> {Color_Off}")
