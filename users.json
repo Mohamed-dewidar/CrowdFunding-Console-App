@@ -28,17 +28,17 @@
         "mobile": "01234567891"
     },
     {
-        "firstName": "asdads",
-        "lastName": "asdad",
-        "email": "abc@yahoo.com",
-        "password": "$2b$12$CIAEbb6wm7g.R2A7F6dayewE6GoKWiABnNO10PxqiWLauxd13hbHu",
-        "mobile": "01012345671"
-    },
-    {
         "firstName": "mena",
         "lastName": "ahsraf",
         "email": "mena@gmail.com",
         "password": "$2b$12$uk4bnG.URFJLfms51wUW0OMOPSpchGjGg55e.b0MdXVZlSBHdCmYe",
         "mobile": "01232321231"
+    },
+    {
+        "firstName": "ahmed",
+        "lastName": "khaled",
+        "email": "ahmed12@gmail.com",
+        "password": "$2b$12$3Lbax4vRi8bhtTf4BhAncuuEM.BewdOpwH6CpgipIB3ixHUH7/tTm",
+        "mobile": "01212345678"
     }
 ]

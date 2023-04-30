@@ -19,15 +19,15 @@ class Project:
             title = Project.__titleValidation()
             details = Project.__detailsValidation()
             while True:
-                target = input(f"{BCyan}Enter target number you want to achieve: {Color_Off}")   
+                target = input(f"{BCyan}Enter target number you want to achieve ==> {Color_Off}")   
                 if  (re.search("^\d+$",target)):           
                     target =  int(target)
                     break
                 else:
-                    print(f"{BCyan}Target must be a number {Color_Off}")
+                    print(f"{Red}Target must be a number {Color_Off}")
             while True:
                 try:
-                    start_date = input(f"{Red}Enter start date (yyyy-mm-dd) ==> {Color_Off}")
+                    start_date = input(f"{BCyan}Enter start date (yyyy-mm-dd) ==> {Color_Off}")
                     start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
                     end_date = input(f"{BCyan}Enter end date (yyyy-mm-dd) ==> {Color_Off}")
                     end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
@@ -355,6 +355,9 @@ class Project:
 
         filteredProjects = [project for project in projectsArr 
                             if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') == date]
+        if(not filteredProjects):
+            print(f"{Red}No project with that date{Color_Off}")
+            return
         Project.viewProject(filteredProjects= filteredProjects)
 
     @staticmethod
@@ -370,6 +373,9 @@ class Project:
 
         filteredProjects = [project for project in projectsArr 
                             if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') > date]
+        if(not filteredProjects):
+            print(f"{Red}No project with that date{Color_Off}")
+            return
         Project.viewProject(filteredProjects= filteredProjects)       
     
 
@@ -386,6 +392,9 @@ class Project:
 
         filteredProjects = [project for project in projectsArr 
                             if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') < date]
+        if(not filteredProjects):
+            print(f"{Red}No project with that date{Color_Off}")
+            return 
         Project.viewProject(filteredProjects= filteredProjects)
 
     @staticmethod
@@ -401,6 +410,9 @@ class Project:
 
         filteredProjects = [project for project in projectsArr 
                             if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') >= date]
+        if(not filteredProjects):
+            print(f"{Red}No project with that date{Color_Off}")
+            return                    
         Project.viewProject(filteredProjects= filteredProjects)
 
 
@@ -417,6 +429,9 @@ class Project:
 
         filteredProjects = [project for project in projectsArr 
                             if datetime.datetime.strptime(project[dateSearch].split()[0], '%Y-%m-%d') <= date]
+        if(not filteredProjects):
+            print(f"{Red}No project with that date{Color_Off}")
+            return
         Project.viewProject(filteredProjects= filteredProjects)     
 
 
